@@ -1,0 +1,46 @@
+@import 'variables';
+@import 'node_modules/skeleton-scss/scss/skeleton.scss';
+
+@import './icons.scss';
+
+:root {
+    /* global */
+    --bg-color: #{$bg-color};
+    --text-color: #{$text-color};
+    --padding: #{$padding};
+    --border-color: #{$border-color};
+    --border-dark-color: #{$border-dark-color};
+    --border-radius: #{$border-radius};
+
+    /* header */
+    --header-bg-color: #{$header-bg-color};
+    --header-brand-color: #{$header-brand-color};
+    --header-brand-font-size: #{$header-brand-font-size};
+    --header-height: #{$header-height};
+    /* modals */
+    --modal-bg-color: #{$modal-bg-color};
+    --modal-text-color: #{$modal-text-color};
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: var(--bg-color);
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+    height: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}

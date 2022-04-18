@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "module": "ESNext",
+        "allowJs": true,
+        "jsx": "react",
+        "jsxFactory": "h",
+        "jsxFragmentFactory": "Fragment",
+        //"declaration": true,
+        "sourceMap": true,
+        // "outFile": "./",                       /* Concatenate and emit output to single file. */
+        "outDir": "./build",                        /* Redirect output structure to the directory. */
+        // "rootDir": "./",                       /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
+        "removeComments": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "skipLibCheck": true
+    },
+    "include": ["src/**/*", "tests/**/*"]
+}

@@ -1,0 +1,27 @@
+$light-grey: #e1e1e1 !default;
+$dark-grey: #333 !default;
+$primary-color: #33c3f0 !default;
+$secondary-color: lighten($dark-grey, 13.5%) !default;
+
+$bg-color: #ffffff !default;
+$text-color: #444444 !default;
+$padding: 0.5rem !default;
+$border-color: #dddddd !default;
+$border-dark-color: rgba(0,0,0,.2) !default;
+$border-radius: 4px !default;
+
+$header-bg-color: #ffffff !default;
+$header-brand-color: rgba(0,0,0,.9) !default;
+$header-brand-font-size: 2.15rem !default;
+$header-height: 50px !default;
+
+$modal-bg-color: #ffffff !default;
+$modal-text-color: #444444 !default;
+
+
+$link-color: #0a75ad !default;
+$font-color: #222 !default;
+
+$icon-font-family: "padme" !default;
+$font-path: "fonts" !default;
+$icon-cog: "\e994";
