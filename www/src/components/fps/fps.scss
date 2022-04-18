@@ -1,0 +1,13 @@
+.container {
+    margin-top: 1rem;
+    padding: 0.3rem;
+    border: 1px dotted #ddd;
+
+    .label {
+        margin-right: 0.3rem;
+    }
+
+    .fps {
+        font-weight: bold;
+    }
+}
