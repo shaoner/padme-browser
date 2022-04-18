@@ -20,6 +20,11 @@
     /* modals */
     --modal-bg-color: #{$modal-bg-color};
     --modal-text-color: #{$modal-text-color};
+    /* footer */
+    --footer-height: #{$footer-height};
+    --footer-bg-color: #{$footer-bg-color};
+    --footer-text-color: #{$footer-text-color};
+    --footer-font-size: #{$footer-font-size};
 }
 
 html, body {

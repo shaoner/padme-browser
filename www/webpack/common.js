@@ -1,5 +1,6 @@
 const path = require('path');
 
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
@@ -95,6 +96,14 @@ module.exports.webpack = {
         ],
     },
     plugins: [
+        new webpack.ProvidePlugin({
+            process: 'process/browser',
+        }),
+        new webpack.EnvironmentPlugin({
+            'VERSION': '0.0.0',
+            'GIT_SHA': '',
+            'GIT_LINK': '',
+        }),
         new HtmlWebpackPlugin({
             inject: true,
             hash: true,

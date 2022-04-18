@@ -1,6 +1,6 @@
 {
   "name": "padme-browser",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Gameboy emulator app",
   "private": true,
   "scripts": {
@@ -37,6 +37,7 @@
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.0",
     "postcss-loader": "^6.2.1",
+    "process": "^0.11.10",
     "progress-bar-webpack-plugin": "^2.1.0",
     "sass": "^1.50.0",
     "sass-loader": "^12.6.0",
