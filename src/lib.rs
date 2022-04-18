@@ -7,9 +7,11 @@ use wasm_bindgen::prelude::*;
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
+mod emulator;
 mod lcd;
 mod serial;
 
+pub use emulator::{WButton, Emulator};
 pub use lcd::Lcd;
 pub use serial::SerialConsole;
 
