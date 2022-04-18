@@ -8,8 +8,10 @@ use wasm_bindgen::prelude::*;
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 mod lcd;
+mod serial;
 
 pub use lcd::Lcd;
+pub use serial::SerialConsole;
 
 #[wasm_bindgen]
 pub fn main() {
