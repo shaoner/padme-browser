@@ -1,0 +1,28 @@
+.container {
+    input[type="file"] {
+        width: 0;
+    }
+
+    .filename {
+        margin-left: 0.3rem;
+        overflow: hidden;
+    }
+
+    margin-bottom: 1rem;
+
+    label {
+        cursor: pointer;
+        position: relative;
+        text-transform: uppercase;
+        vertical-align: middle;
+        overflow: hidden;
+        &::before {
+            content: 'Select a game...';
+        }
+
+        &::-webkit-file-upload-button {
+            visibility: hidden;
+            width: 0;
+        }
+    }
+}
