@@ -1,8 +1,12 @@
 # Padme browser
 
+@ https://padme.cc
+
 This is a WebAssembly version of a GB emulator [padme-core](https://github.com/alexlren/padme-core).
 
-https://padme.cc
+## Demo
+
+<img src="/docs/demo.gif" width="300"/>
 
 ## Architecture
 
