@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    justify-content: center;
+
+    .subcontainer {
+        @media only screen and (min-width: 768px) {
+            width: 350px;
+        }
+
+        .game {
+            position: relative;
+            display: inline-block;
+            margin: auto;
+            background-image: url('./housing.svg');
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            .housing {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 0;
+                object-fit: contain;
+                width: 100%;
+                height: 100%;
+            }
+
+            .indicator {
+                border-radius: 50%;
+                background-color: #666;
+                &.active {
+                    background-color: red;
+                }
+            }
+        }
+    }
+}
