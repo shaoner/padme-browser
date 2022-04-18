@@ -1,0 +1,23 @@
+.container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding) calc(2 * var(--padding));
+    background-color: var(--header-bg-color) !important;
+    border-bottom: 1px solid var(--border-color);
+    height: var(--header-height);
+    margin-bottom: calc(var(--padding) * 4);
+
+    .brand {
+        padding-top: .3125rem;
+        padding-bottom: .3125rem;
+        margin: auto;
+        font-size: var(--header-brand-font-size);
+        font-weight: bold;
+        text-decoration: none;
+        white-space: nowrap;
+        color: var(--header-brand-color);
+    }
+}
