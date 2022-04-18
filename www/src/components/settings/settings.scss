@@ -1,0 +1,85 @@
+.container {
+    padding: var(--padding);
+
+    label {
+        display: inline-block;
+        margin-right: 0.3rem;
+    }
+
+    .separator {
+        width: 100%;
+        height: 1px;
+        border-bottom: 1px solid var(--border-color);
+    }
+}
+
+.controldir {
+    width: 25px;
+    height: 25px;
+    background-image: url('./dir.svg');
+    background-size: cover;
+    position: relative;
+    vertical-align: middle;
+
+    .pointer {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background-color: red;
+
+        &.up {
+            top: 2px;
+            left: 9px;
+        }
+
+        &.left {
+            top: 10px;
+            left: 2px;
+        }
+
+        &.right {
+            top: 10px;
+            left: 16px;
+        }
+
+        &.down {
+            top: 18px;
+            left: 9px;
+        }
+    }
+}
+
+.keymap {
+    td {
+        text-align: center;
+    }
+
+    td.input {
+        padding-left: 0;
+        padding-right: 32px;
+        input {
+            margin-bottom: 0;
+        }
+    }
+
+    .controlaction {
+        width: 26px;
+        height: 26px;
+        border-radius: 13px;
+        border: 3px solid #000;
+        background-color: #d60e8b;
+        color: #0000ff;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .controls {
+        background-color: #ddd;
+        border-radius: var(--border-radius);
+        color: #0000ff;
+        font-size: 1.1rem;
+        width: 60px;
+        text-align: center;
+        height: 20px;
+    }
+}
