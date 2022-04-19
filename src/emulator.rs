@@ -34,6 +34,11 @@ impl Emulator {
         })
     }
 
+    pub fn load_bin(&mut self, bin: Vec<u8>) -> Result<(), JsValue> {
+        self.sys.load_bin(bin).map_err(| _ | { JsValue::from(format!("Invalid rom")) })?;
+        Ok(())
+    }
+
     pub fn update(&mut self) -> u32 {
         self.sys.update_frame()
     }

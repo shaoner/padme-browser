@@ -51,6 +51,9 @@ module.exports.webpack = {
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js'],
+        modules: [
+            path.resolve(__dirname, '../node_modules'),
+        ],
     },
     experiments: {
         syncWebAssembly: true,

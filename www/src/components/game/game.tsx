@@ -76,6 +76,7 @@ class GameComponent extends Component<Props, State> {
     private _gameRef = createRef();
     private _screenRef = createRef();
     private _fpsRef = createRef();
+    private _reqId?: number = undefined;
     public emu?: Emulator;
 
     constructor(props: Props) {
@@ -163,7 +164,7 @@ class GameComponent extends Component<Props, State> {
             this._screenRef.current.updateImage();
             this._fpsRef.current.end();
             if (this.state.isRunning) {
-                requestAnimationFrame(this._updateFrame);
+                this._reqId = requestAnimationFrame(this._updateFrame);
             }
         }
     }
@@ -175,12 +176,17 @@ class GameComponent extends Component<Props, State> {
             // empty serial function for now
             this.emu = Emulator.new(bin8, () => undefined);
             this._screenRef.current.setFramebuffer(this.emu.framebuffer());
-            await this.run();
+        } else {
+            this.emu.load_bin(bin8);
         }
+        await this.run();
     }
 
     public async run() {
         await this.setState({ isRunning: true });
+        if (this._reqId) {
+            cancelAnimationFrame(this._reqId);
+        }
         this._updateFrame();
     }
 
