@@ -97,7 +97,7 @@ class GameComponent extends Component<Props, State> {
     private _handleControlTouch(t: Touch) {
         const { x, y } = this._gameRef.current.getBoundingClientRect();
         const scale = window.screen.width / DEFAULT_HOUSING_WIDTH;
-        const border = 6 * scale; // default size of the border
+        const border = 12 * scale; // default size of the border
 
         if (isRectIn(x, y, t, DEFAULT_CTRL.UP, scale, border)) {
             this._pressCtrl(WButton.Up, true);
