@@ -1,6 +1,6 @@
 import { FunctionalComponent, VNode, h } from 'preact';
 import { createPortal } from 'preact/compat';
-import { useState, useLayoutEffect } from 'preact/hooks';
+import { useRef, useState, useLayoutEffect } from 'preact/hooks';
 
 import style from './modal.scss';
 
@@ -51,22 +51,28 @@ type Props = {
 };
 
 const Modal: FunctionalComponent<Props> = ({ children, isOpen, onClose, title }) => {
+    const innerEl = useRef(null);
     let modalClass = style.modal;
     if (isOpen) {
         modalClass += ` ${style.open}`;
     }
+    const onDiscard = (e: MouseEvent) => {
+        if (e.target as HTMLElement == innerEl.current) {
+            onClose();
+        }
+    };
     return (
         <Portal wrapperId="modals">
-            <div class={modalClass}>
-            <div class={style.inner}>
-            <div class={style.content}>
-                <div class={style.header}>
-            <h5 class={style.title}>{title}</h5>
-                    <button onClick={onClose} class={style.close}></button>
+            <div class={modalClass} onClick={onDiscard}>
+                <div ref={innerEl} class={style.inner}>
+                    <div class={style.content}>
+                        <div class={style.header}>
+                            <h5 class={style.title}>{title}</h5>
+                            <button onClick={onClose} class={style.close}></button>
+                        </div>
+                        <div class={style.body}>{children}</div>
+                    </div>
                 </div>
-                <div class={style.body}>{children}</div>
-            </div>
-            </div>
             </div>
         </Portal>
     );
