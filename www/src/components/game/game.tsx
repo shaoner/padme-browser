@@ -101,19 +101,26 @@ class GameComponent extends Component<Props, State> {
 
         if (isRectIn(x, y, t, DEFAULT_CTRL.UP, scale, border)) {
             this._pressCtrl(WButton.Up, true);
-        } else if (isRectIn(x, y, t, DEFAULT_CTRL.DOWN, scale, border)) {
+        }
+        if (isRectIn(x, y, t, DEFAULT_CTRL.DOWN, scale, border)) {
             this._pressCtrl(WButton.Down, true);
-        } else if (isRectIn(x, y, t, DEFAULT_CTRL.LEFT, scale, border)) {
+        }
+        if (isRectIn(x, y, t, DEFAULT_CTRL.LEFT, scale, border)) {
             this._pressCtrl(WButton.Left, true);
-        } else if (isRectIn(x, y, t, DEFAULT_CTRL.RIGHT, scale, border)) {
+        }
+        if (isRectIn(x, y, t, DEFAULT_CTRL.RIGHT, scale, border)) {
             this._pressCtrl(WButton.Right, true);
-        } else if (isRectIn(x, y, t, DEFAULT_CTRL.A, scale, border)) {
+        }
+        if (isRectIn(x, y, t, DEFAULT_CTRL.A, scale, border)) {
             this._pressCtrl(WButton.A, true);
-        } else if (isRectIn(x, y, t, DEFAULT_CTRL.B, scale, border)) {
+        }
+        if (isRectIn(x, y, t, DEFAULT_CTRL.B, scale, border)) {
             this._pressCtrl(WButton.B, true);
-        } else if (isRectIn(x, y, t, DEFAULT_CTRL.SELECT, scale, 0)) {
+        }
+        if (isRectIn(x, y, t, DEFAULT_CTRL.SELECT, scale, 0)) {
             this._pressCtrl(WButton.Select, true);
-        } else if (isRectIn(x, y, t, DEFAULT_CTRL.START, scale, 0)) {
+        }
+        if (isRectIn(x, y, t, DEFAULT_CTRL.START, scale, 0)) {
             this._pressCtrl(WButton.Start, true);
         }
     }
