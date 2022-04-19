@@ -3,9 +3,9 @@ import { useState } from 'preact/hooks';
 
 import { Settings } from '../settings';
 
-import style from './header.scss';
+import style from './navbar.scss';
 
-const Header: FunctionalComponent = () => {
+const NavBar: FunctionalComponent = () => {
     const [isOpen, setOpen] = useState(false);
 
     return (
@@ -17,4 +17,4 @@ const Header: FunctionalComponent = () => {
     );
 }
 
-export { Header };
+export { NavBar };

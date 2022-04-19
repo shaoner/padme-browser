@@ -1,8 +1,9 @@
 .container {
     display: flex;
-    justify-content: center;
 
     .subcontainer {
+        margin: auto;
+
         @media only screen and (min-width: 768px) {
             width: 350px;
         }
@@ -14,6 +15,10 @@
             background-image: url('./housing.svg');
             background-repeat: no-repeat;
             background-size: cover;
+
+            @media only screen and (max-width: 768px) {
+                margin: auto calc(var(--padding) * -4);
+            }
 
             .housing {
                 position: absolute;

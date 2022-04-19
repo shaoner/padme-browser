@@ -1,0 +1,20 @@
+.header {
+    background-color: var(--header-bg-color) !important;
+    height: var(--header-height);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.content {
+    flex-grow: 1;
+    padding: calc(var(--padding) * 4);
+}
+
+.footer {
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+    height: var(--footer-height);
+    line-height: calc(var(--footer-height) - 1px);
+    padding: 0 calc(var(--padding) * 2);
+    border-top: 1px solid var(--border-color);
+    font-size: var(--footer-font-size);
+}
