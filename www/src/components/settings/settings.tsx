@@ -4,6 +4,7 @@ import { useStoreon } from 'storeon/preact';
 
 import { InputKey } from './input-key';
 import { Modal, type ModalProps } from '../modal';
+import { isMobile } from '../../utils';
 
 import style from './settings.scss';
 
@@ -36,7 +37,7 @@ const Settings: FunctionalComponent<Props> = ({ isOpen, onClose }) => {
                 </div>
             </div>
             <div class={style.separator}/>
-            <table class={style.keymap}>
+            <table class={style.keymap} style={{ display: isMobile() ? 'none' : 'block' }}>
                 <tr>
                 <td>
                     <label class={style.controldir} for="up-input">
