@@ -2,7 +2,7 @@ import { FunctionalComponent, h } from 'preact';
 
 import { Control, ControlProps } from './control';
 
-const CTRL_S_WIDTH      = 32;
+const CTRL_S_WIDTH      = 34;
 const CTRL_S_HEIGHT     = 10;
 
 type Props = {

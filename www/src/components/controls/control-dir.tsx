@@ -2,8 +2,8 @@ import { FunctionalComponent, h } from 'preact';
 
 import { Control, ControlProps } from './control';
 
-const CTRL_DIR_WIDTH    = 12;
-const CTRL_DIR_HEIGHT   = 12;
+const CTRL_DIR_WIDTH    = 18;
+const CTRL_DIR_HEIGHT   = 18;
 
 type Props = {
     x: ControlProps['x'];

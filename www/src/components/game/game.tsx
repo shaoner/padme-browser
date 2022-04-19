@@ -22,8 +22,8 @@ import { isMobile } from '../../utils';
 
 import style from './game.scss';
 
-const DEFAULT_HOUSING_WIDTH     = 245;
-const DEFAULT_HOUSING_HEIGHT    = 420;
+const DEFAULT_HOUSING_WIDTH     = 280;
+const DEFAULT_HOUSING_HEIGHT    = 462;
 
 type GCRect = {
     x: number;
@@ -35,14 +35,14 @@ type GCRect = {
 const DEFAULT_CTRL: {
     [name: string]: GCRect;
 } = {
-    UP: { x: 41, y: 233, width: CTRL_DIR_WIDTH, height: CTRL_DIR_HEIGHT },
-    DOWN: { x: 41, y: 264, width: CTRL_DIR_WIDTH, height: CTRL_DIR_HEIGHT },
-    LEFT: { x: 26, y: 248, width: CTRL_DIR_WIDTH, height: CTRL_DIR_HEIGHT },
-    RIGHT: { x: 57, y: 248, width: CTRL_DIR_WIDTH, height: CTRL_DIR_HEIGHT },
-    A: { x: 199, y: 234, width: CTRL_ACTION_WIDTH, height: CTRL_ACTION_HEIGHT },
-    B: { x: 165, y: 257, width: CTRL_ACTION_WIDTH, height: CTRL_ACTION_HEIGHT },
-    SELECT: { x: 71, y: 327, width: CTRL_S_WIDTH, height: CTRL_S_HEIGHT },
-    START: { x: 122, y: 327, width: CTRL_S_WIDTH, height: CTRL_S_HEIGHT },
+    UP: { x: 47, y: 285, width: CTRL_DIR_WIDTH, height: CTRL_DIR_HEIGHT },
+    DOWN: { x: 47, y: 323, width: CTRL_DIR_WIDTH, height: CTRL_DIR_HEIGHT },
+    LEFT: { x: 28, y: 304, width: CTRL_DIR_WIDTH, height: CTRL_DIR_HEIGHT },
+    RIGHT: { x: 66, y: 304, width: CTRL_DIR_WIDTH, height: CTRL_DIR_HEIGHT },
+    A: { x: 225, y: 284, width: CTRL_ACTION_WIDTH, height: CTRL_ACTION_HEIGHT },
+    B: { x: 178, y: 306, width: CTRL_ACTION_WIDTH, height: CTRL_ACTION_HEIGHT },
+    SELECT: { x: 83, y: 375, width: CTRL_S_WIDTH, height: CTRL_S_HEIGHT },
+    START: { x: 131, y: 375, width: CTRL_S_WIDTH, height: CTRL_S_HEIGHT },
 };
 
 type Props = {
@@ -227,15 +227,15 @@ class GameComponent extends Component<Props, State> {
                         width: DEFAULT_HOUSING_WIDTH * scale,
                         height: DEFAULT_HOUSING_HEIGHT * scale
                     }}>
-                        <GameSection x={25}
-                                       y={50}
-                                       width={7}
-                                       height={7}
+                        <GameSection x={35}
+                                       y={110}
+                                       width={8}
+                                       height={8}
                                        scale={scale}
                                        className={style.indicator + (this.state.isRunning ? ` ${style.active}` : '')} />
                         <Screen ref={this._screenRef}
-                                x={43}
-                                y={36}
+                                x={60}
+                                y={57}
                                 width={160}
                                 height={144}
                                 scale={scale} />

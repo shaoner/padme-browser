@@ -18,16 +18,16 @@
     }
 
     &.control-dir {
-        width: 12px;
-        height: 12px;
+        width: 18px;
+        height: 18px;
         &:after {
             border-radius: 2px;
         }
     }
 
     &.control-action {
-        width: 18px;
-        height: 18px;
+        width: 28px;
+        height: 28px;
         border-radius: 50%;
         &:after {
             border-radius: 50%;
@@ -35,10 +35,10 @@
     }
 
     &.control-s {
-        width: 32px;
+        width: 34px;
         height: 10px;
         border-radius: 5px;
-        transform: rotate(-35deg);
+        transform: rotate(-24deg);
         &:after {
             border-radius: 5px;
         }
