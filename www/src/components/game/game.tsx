@@ -65,10 +65,10 @@ type State = {
 const isRectIn = (offsetX: number, offsetY: number, t: Touch, rect: GCRect, scale: number, border: number) => {
     const cx = offsetX + rect.x * scale - border;
     const cy = offsetY + rect.y * scale - border;
-    return (t.clientX >= cx
-         && t.clientX <= (cx + rect.width * scale + border)
-         && t.clientY >= cy
-         && t.clientY <= (cy + rect.height * scale + border));
+    return (t.clientX >= (cx - t.radiusX)
+         && t.clientX <= (cx + rect.width * scale + border + t.radiusX)
+         && t.clientY >= (cy - t.radiusY)
+         && t.clientY <= (cy + rect.height * scale + border + t.radiusY));
 };
 
 
