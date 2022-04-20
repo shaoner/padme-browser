@@ -11,6 +11,17 @@
         height: 1px;
         border-bottom: 1px solid var(--border-color);
     }
+
+    table.global {
+        td {
+            border-bottom: 0;
+            padding: 5px 10px;
+            > * {
+                max-width: 100px;
+            }
+        }
+        margin-bottom: 0;
+    }
 }
 
 .controldir {
