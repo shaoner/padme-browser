@@ -22,7 +22,7 @@ const Settings: FunctionalComponent<Props> = ({ isOpen, onClose }) => {
             <div class="row">
                 <div class="four columns">
                     <label for="scale-input">Scale</label>
-                    <input type="number" onInput={(e) => {
+                    <input type="range" onInput={(e) => {
                         e.target && dispatch('game/scale/update', (e.target as HTMLInputElement).value)
                     }} step={0.1} min={1} max={3} id="scale-input" value={scale} />
                 </div>
