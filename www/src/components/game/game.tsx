@@ -24,6 +24,8 @@ import style from './game.scss';
 
 const DEFAULT_HOUSING_WIDTH     = 280;
 const DEFAULT_HOUSING_HEIGHT    = 462;
+const DEFAULT_FPS               = 60;
+const DEFAULT_MIN_FRAME_TIME    = 1000 / DEFAULT_FPS;
 
 type GCRect = {
     x: number;
@@ -159,12 +161,21 @@ class GameComponent extends Component<Props, State> {
 
     private _updateFrame() {
         if (this.emu) {
-            this._fpsRef.current.start();
+            const t0 = this._fpsRef.current.start();
             this.emu.update();
             this._screenRef.current.updateImage();
-            this._fpsRef.current.end();
+            const t1 = this._fpsRef.current.end();
+
             if (this.state.isRunning) {
-                this._reqId = requestAnimationFrame(this._updateFrame);
+                const frameTime = t1 - t0;
+                let waitTime = 0;
+
+                if (frameTime < DEFAULT_MIN_FRAME_TIME) {
+                    waitTime = DEFAULT_MIN_FRAME_TIME - frameTime;
+                }
+                setTimeout(() => {
+                    this._reqId = requestAnimationFrame(this._updateFrame);
+                }, waitTime);
             }
         }
     }
