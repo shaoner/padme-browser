@@ -14,26 +14,32 @@ type Props = {
 }
 
 const Settings: FunctionalComponent<Props> = ({ isOpen, onClose }) => {
-    const { dispatch, scale, styleName, keys } = useStoreon('scale', 'styleName', 'keys');
+    const { dispatch, scale, styleName, keys, maxFps } = useStoreon('scale', 'styleName', 'keys', 'maxFps');
 
     return (
         <Modal title={'Settings'} isOpen={isOpen} onClose={onClose}>
             <div class={style.container}>
             <div class="row">
-                <div class="six columns">
+                <div class="four columns">
                     <label for="scale-input">Scale</label>
                     <input type="number" onInput={(e) => {
                         e.target && dispatch('game/scale/update', (e.target as HTMLInputElement).value)
                     }} step={0.1} min={1} max={3} id="scale-input" value={scale} />
                 </div>
-                <div class="six columns">
+                <div class="four columns">
                     <label for="style-input">Style</label>
-                   <select id="style-input" value={styleName} onChange={(e) => {
+                    <select id="style-input" value={styleName} onChange={(e) => {
                        e.target && dispatch('game/style/update', (e.target as HTMLSelectElement).value)
-                   }}>
-                       <option value="nostyle">No style</option>
-                       <option value="classic">Retro</option>
-                   </select>
+                    }}>
+                        <option value="nostyle">No style</option>
+                        <option value="classic">Retro</option>
+                    </select>
+                </div>
+                <div class="four columns">
+                    <label for="max-fps-input">Max FPS</label>
+                    <input id="max-fps-input" type="number" onInput={(e) => {
+                        e.target && dispatch('game/max-fps/update', (e.target as HTMLInputElement).value)
+                    }} step={1} min={1} max={200} value={maxFps} />
                 </div>
             </div>
             <div class={style.separator}/>

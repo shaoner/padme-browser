@@ -9,6 +9,7 @@ interface State {
     keys: {
         [name: number]: number;
     };
+    maxFps: number;
 }
 
 interface Events {
@@ -18,6 +19,7 @@ interface Events {
     };
     'game/scale/update': number;
     'game/style/update': string;
+    'game/max-fps/update': number;
 }
 
 const initialState = {
@@ -33,6 +35,7 @@ const initialState = {
         [WButton.Select]: keyCodes.ALT,
         [WButton.Start]: keyCodes.ENTER,
     },
+    maxFps: 60,
 };
 
 const reducer: StoreonModule<State, Events> = (store) => {
@@ -48,6 +51,10 @@ const reducer: StoreonModule<State, Events> = (store) => {
 
     store.on('game/style/update', (state, styleName) => (
         { ...state, styleName }
+    ));
+
+    store.on('game/max-fps/update', (state, maxFps) => (
+        { ...state, maxFps }
     ));
 };
 

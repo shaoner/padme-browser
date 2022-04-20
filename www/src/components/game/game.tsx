@@ -24,8 +24,6 @@ import style from './game.scss';
 
 const DEFAULT_HOUSING_WIDTH     = 280;
 const DEFAULT_HOUSING_HEIGHT    = 462;
-const DEFAULT_FPS               = 60;
-const DEFAULT_MIN_FRAME_TIME    = 1000 / DEFAULT_FPS;
 
 type GCRect = {
     x: number;
@@ -50,6 +48,7 @@ const DEFAULT_CTRL: {
 type Props = {
     scale: GameState['scale'];
     keys: GameState['keys'];
+    maxFps: GameState['maxFps'];
 };
 
 type State = {
@@ -161,6 +160,9 @@ class GameComponent extends Component<Props, State> {
 
     private _updateFrame() {
         if (this.emu) {
+            const { maxFps } = this.props;
+            const minFrameTime = 1000 / maxFps;
+
             const t0 = this._fpsRef.current.start();
             this.emu.update();
             this._screenRef.current.updateImage();
@@ -170,8 +172,8 @@ class GameComponent extends Component<Props, State> {
                 const frameTime = t1 - t0;
                 let waitTime = 0;
 
-                if (frameTime < DEFAULT_MIN_FRAME_TIME) {
-                    waitTime = DEFAULT_MIN_FRAME_TIME - frameTime;
+                if (frameTime < minFrameTime) {
+                    waitTime = minFrameTime - frameTime;
                 }
                 setTimeout(() => {
                     this._reqId = requestAnimationFrame(this._updateFrame);
@@ -303,4 +305,4 @@ class GameComponent extends Component<Props, State> {
     }
 }
 
-export const Game = connectStoreon('keys', 'scale', GameComponent);
+export const Game = connectStoreon('keys', 'scale', 'maxFps', GameComponent);
