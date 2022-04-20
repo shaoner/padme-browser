@@ -159,25 +159,21 @@ class GameComponent extends Component<Props, State> {
     }
 
     private _updateFrame() {
-        if (this.emu) {
+        if (this.emu && this.state.isRunning) {
             const { maxFps } = this.props;
             const minFrameTime = 1000 / maxFps;
+            const elapsedTime = this._fpsRef.current.elapsed();
 
-            const t0 = this._fpsRef.current.start();
-            this.emu.update();
-            this._screenRef.current.updateImage();
-            const t1 = this._fpsRef.current.end();
+            // This just adds this function for the next animation refresh
+            this._reqId = requestAnimationFrame(this._updateFrame);
 
-            if (this.state.isRunning) {
-                const frameTime = t1 - t0;
-                let waitTime = 0;
-
-                if (frameTime < minFrameTime) {
-                    waitTime = minFrameTime - frameTime;
-                }
-                setTimeout(() => {
-                    this._reqId = requestAnimationFrame(this._updateFrame);
-                }, waitTime);
+            // We actually render a frame when we reach the minimum frame time
+            if (elapsedTime > minFrameTime) {
+                // Now we can draw and update the fps counter
+                // We also remove the extra time
+                this._fpsRef.current.update(elapsedTime % minFrameTime);
+                this.emu.update();
+                this._screenRef.current.updateImage();
             }
         }
     }
@@ -200,6 +196,7 @@ class GameComponent extends Component<Props, State> {
         if (this._reqId) {
             cancelAnimationFrame(this._reqId);
         }
+        this._fpsRef.current.start();
         this._updateFrame();
     }
 

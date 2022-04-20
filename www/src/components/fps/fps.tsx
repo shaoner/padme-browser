@@ -23,22 +23,25 @@ class FpsComponent extends Component<Props, State> {
         this._endTime = 0;
     }
 
-    public start(): number {
+    public start() {
         this._startTime = new Date().getTime();
-        return this._startTime;
     }
 
-    public end(): number {
+    public update(extra: number) {
+        this._startTime = new Date().getTime() - extra;
         ++this._frameCount;
-        const endFrame = new Date().getTime();
+    }
 
-        if ((this._startTime - this._endTime) > 1000) {
+    public elapsed(): number {
+        const endTime = new Date().getTime();
+
+        if ((this._startTime - this._endTime) >= 1000) {
             this.setState({ fps: this._frameCount });
-            this._endTime = endFrame;
+            this._endTime = endTime;
             this._frameCount = 0;
         }
 
-        return endFrame;
+        return endTime - this._startTime;
     }
 
     render() {
