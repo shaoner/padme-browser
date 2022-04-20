@@ -33,6 +33,7 @@
             .indicator {
                 border-radius: 50%;
                 background-color: #666;
+                box-shadow: inset 1px 1px 1px 0px rgba(0,0,0,0.5);
                 &.active {
                     background-color: red;
                 }
