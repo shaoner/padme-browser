@@ -1,5 +1,6 @@
 .container {
     display: flex;
+    padding: calc(var(--padding) * 4) 0;
 
     .subcontainer {
         margin: auto;

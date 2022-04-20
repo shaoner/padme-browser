@@ -9,7 +9,7 @@ const NavBar: FunctionalComponent = () => {
     const [isOpen, setOpen] = useState(false);
 
     return (
-        <nav class={style.container}>
+        <nav class={style.navbar}>
             <a class={style.brand} href="#">Padme</a>
             <a href="#" onClick={() => setOpen(true)}><i class="icon icon-cog"/></a>
             <Settings isOpen={isOpen} onClose={() => setOpen(false)} />
