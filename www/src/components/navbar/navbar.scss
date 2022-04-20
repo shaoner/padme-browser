@@ -16,4 +16,10 @@
         white-space: nowrap;
         color: var(--header-brand-color);
     }
+
+    .rightmenu {
+        display: flex;
+        flex-direction: row;
+        column-gap: 10px;
+    }
 }

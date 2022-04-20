@@ -30,3 +30,9 @@
         content: $icon-cog;
     }
 }
+
+.icon-question {
+    &:before {
+        content: $icon-question;
+    }
+}
