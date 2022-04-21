@@ -1,7 +1,7 @@
 use wasm_bindgen::prelude::*;
-use padme_core::{Button, Rom, System};
+use padme_core::{Button, System};
 
-use crate::{Lcd, SerialConsole};
+use crate::{Cartridge, Lcd, SerialConsole};
 
 #[wasm_bindgen]
 pub enum WButton {
@@ -22,16 +22,18 @@ pub struct Emulator {
 
 #[wasm_bindgen]
 impl Emulator {
-    pub fn new(bin: Vec<u8>, on_serial_handler: js_sys::Function) -> Result<Emulator, JsValue> {
-        let rom = Rom::load(bin).map_err(| _ | { JsValue::from(format!("Invalid rom")) })?;
-
-        Ok(Emulator {
-             sys: System::new(
-                rom,
+    pub fn new(cartridge: Cartridge, on_serial_handler: js_sys::Function) -> Self {
+        Emulator {
+            sys: System::new(
+                cartridge.rom(),
                 Lcd::new(),
-                SerialConsole::new(on_serial_handler),
+                SerialConsole::new(on_serial_handler)
             ),
-        })
+        }
+    }
+
+    pub fn load_cartridge(&mut self, cartridge: Cartridge) {
+        self.sys.load_rom(cartridge.rom())
     }
 
     pub fn load_bin(&mut self, bin: Vec<u8>) -> Result<(), JsValue> {
