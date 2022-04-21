@@ -1,3 +1,5 @@
+@use "sass:map";
+
 $light-grey: #e1e1e1 !default;
 $dark-grey: #333 !default;
 $primary-color: #33c3f0 !default;
@@ -30,3 +32,19 @@ $icon-font-family: "padme" !default;
 $font-path: "fonts" !default;
 $icon-cog: "\e994";
 $icon-question: "\ea09";
+
+// Breakpoints
+$breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px
+);
+
+$bp-larger-than-mobile    : "min-width: #{map.get($breakpoints, 'xs')}" !default;
+$bp-larger-than-phablet   : "min-width: #{map.get($breakpoints, 'sm')}" !default;
+$bp-larger-than-tablet    : "min-width: #{map.get($breakpoints, 'md')}" !default;
+$bp-larger-than-desktop   : "min-width: #{map.get($breakpoints, 'lg')}" !default;
+$bp-larger-than-desktophd : "min-width: #{map.get($breakpoints, 'xl')}" !default;

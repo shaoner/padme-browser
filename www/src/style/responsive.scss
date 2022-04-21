@@ -1,0 +1,15 @@
+@each $name, $size in $breakpoints {
+    .visible-until-#{$name} {
+        display: none;
+        @media (max-width: $size) {
+            display: block;
+        }
+    }
+
+    .hidden-#{$name} {
+        display: none;
+        @media (min-width: $size) {
+            display: block;
+        }
+    }
+}
