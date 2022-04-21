@@ -1,7 +1,7 @@
 import { FunctionalComponent, h } from 'preact';
 import { useRef } from 'preact/hooks';
 
-import keyCodes from '../game/keycodes';
+import keyCodes from './keycodes';
 
 import style from './input-key.scss';
 

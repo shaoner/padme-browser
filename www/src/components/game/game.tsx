@@ -17,7 +17,7 @@ import {
 import { Fps } from '../fps';
 import { GameSection } from '../game-section';
 import { Screen } from '../screen';
-import { GameState } from './state';
+import { SettingsState } from '../settings/store';
 import { isMobile } from '../../utils';
 
 import style from './game.scss';
@@ -46,9 +46,7 @@ const DEFAULT_CTRL: {
 };
 
 type Props = {
-    scale: GameState['scale'];
-    keys: GameState['keys'];
-    maxFps: GameState['maxFps'];
+    settings: SettingsState['settings'];
 };
 
 type State = {
@@ -147,7 +145,7 @@ class GameComponent extends Component<Props, State> {
     }
 
     private _handleKeyPress(keyCode: number, isPressed: boolean) {
-        const keyMap: { [name: number]: number } = this.props.keys;
+        const keyMap: { [name: number]: number } = this.props.settings.keys;
 
         for (let name in keyMap) {
             const code = keyMap[name];
@@ -160,7 +158,7 @@ class GameComponent extends Component<Props, State> {
 
     private _updateFrame() {
         if (this.emu && this.state.isRunning) {
-            const { maxFps } = this.props;
+            const { settings: { maxFps } } = this.props;
             const minFrameTime = 1000 / maxFps;
             const elapsedTime = this._fpsRef.current.elapsed();
 
@@ -234,7 +232,7 @@ class GameComponent extends Component<Props, State> {
     }
 
     public render() {
-        let { scale } = this.props;
+        let { settings: { scale } } = this.props;
 
         // Full screen on Mobile
         if (isMobile()) {
@@ -302,4 +300,4 @@ class GameComponent extends Component<Props, State> {
     }
 }
 
-export const Game = connectStoreon('keys', 'scale', 'maxFps', GameComponent);
+export const Game = connectStoreon('settings', GameComponent);
