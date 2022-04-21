@@ -15,7 +15,9 @@ const App: FunctionalComponent = () => (
         </Header>
         <Content>
             <Panel>
-                <CartridgeInfo />
+                <div class="hidden-sm">
+                    <CartridgeInfo />
+                </div>
             </Panel>
             <Panel>
                 <Game />
