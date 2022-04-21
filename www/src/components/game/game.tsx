@@ -1,4 +1,4 @@
-import { Emulator, WButton } from 'padme-wasm';
+import { Cartridge, Emulator, WButton } from 'padme-wasm';
 import { Component, createRef, h } from 'preact';
 import { connectStoreon } from 'storeon/preact';
 
@@ -176,15 +176,13 @@ class GameComponent extends Component<Props, State> {
         }
     }
 
-    public async loadCartridge(file: File) {
-        const bin = await file.arrayBuffer();
-        const bin8 = new Uint8Array(bin);
+    public async loadCartridge(cartridge: Cartridge) {
         if (!this.emu) {
             // empty serial function for now
-            this.emu = Emulator.new(bin8, () => undefined);
+            this.emu = Emulator.new(cartridge, () => undefined);
             this._screenRef.current.setFramebuffer(this.emu.framebuffer());
         } else {
-            this.emu.load_bin(bin8);
+            this.emu.load_cartridge(cartridge);
         }
         await this.run();
     }

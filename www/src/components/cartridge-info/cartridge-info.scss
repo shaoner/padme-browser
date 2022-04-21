@@ -1,0 +1,72 @@
+@use "sass:math";
+@import "node_modules/skeleton-scss/scss/base/_variables.scss";
+
+$height: 200px;
+$width: 200px;
+$border-size: 2px;
+$border-radius: 10px;
+$border-color: #ddd;
+$scooped-corner-width: math.div($width, 10);
+$scooped-corner-height: math.div($height, 10);
+
+.cartridge {
+    width: $width;
+    height: $height;
+    border: $border-size solid $border-color;
+    border-radius: $border-radius;
+    position: relative;
+    background-color: #fafafa;
+    top: -300px;
+    transition: top 500ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+
+    &.loaded {
+        top: 80px;
+    }
+
+    &:after {
+        content: "";
+        width: $scooped-corner-width;
+        height: $scooped-corner-height;
+        display: inline-block;
+        background-color: white;
+        position: absolute;
+        top: -$border-size;
+        left: $width - 2 * $border-size - $scooped-corner-width;
+        border-bottom: $border-size solid $border-color;
+        border-left: $border-size solid $border-color;
+        border-bottom-left-radius: $border-radius;
+    }
+
+    .header {
+        height: 60px;
+        line-height: 30px;
+        padding: 16px;
+
+        .title {
+            text-align: center;
+            border: 1px solid $border-color;
+            background-color: #eee;
+            border-radius: 16px;
+            font-size: 1.3rem;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    }
+
+    .body {
+        font-size: 1.0rem;
+
+        td {
+            border-bottom: 0px;
+            padding: 0 calc(var(--padding) * 2);
+        }
+
+        tr > td:first-child:before {
+            content: '• ';
+        }
+    }
+
+    .value {
+        font-weight: bold;
+    }
+}

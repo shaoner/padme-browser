@@ -12,6 +12,14 @@ const Header: FunctionalComponent = ({ children }) => (
 
 const Content: FunctionalComponent = ({ children }) => (
     <div class={`${style.content} container`}>
+        <div class="row">
+            {children}
+        </div>
+    </div>
+);
+
+const Panel: FunctionalComponent = ({ children }) => (
+    <div class="four columns">
         {children}
     </div>
 );
@@ -26,4 +34,4 @@ const Footer: FunctionalComponent = ({ children }) => (
     </div>
 );
 
-export { Header, Content, Footer };
+export { Header, Content, Footer, Panel };

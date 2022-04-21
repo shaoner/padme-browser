@@ -1,14 +1,16 @@
 .container {
+    margin-bottom: 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
     input[type="file"] {
         width: 0;
     }
 
     .filename {
         margin-left: 0.3rem;
-        overflow: hidden;
     }
-
-    margin-bottom: 1rem;
 
     label {
         cursor: pointer;

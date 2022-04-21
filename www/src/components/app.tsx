@@ -1,9 +1,10 @@
 import { FunctionalComponent, h } from 'preact';
 import { StoreContext } from 'storeon/preact';
 
+import { CartridgeInfo } from './cartridge-info';
 import { NavBar } from './navbar';
 import { Game } from './game';
-import { Header, Content, Footer } from './layout';
+import { Header, Content, Footer, Panel } from './layout';
 
 import store from '../store';
 
@@ -13,7 +14,12 @@ const App: FunctionalComponent = () => (
             <NavBar />
         </Header>
         <Content>
-            <Game />
+            <Panel>
+                <CartridgeInfo />
+            </Panel>
+            <Panel>
+                <Game />
+            </Panel>
         </Content>
         <Footer>
             v{process.env.VERSION} | <a href={process.env.GIT_LINK}>{process.env.GIT_SHA}</a>
