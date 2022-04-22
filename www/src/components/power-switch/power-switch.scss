@@ -1,0 +1,67 @@
+@use 'sass:math';
+
+.powerswitch {
+    font-size: 0.8rem;
+    color: #aaa;
+    display: flex;
+    gap: 4px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.switch {
+    $height: 14px;
+    $width: 34px;
+    $padding: 0;
+    $knob-height: $height - 2 * $padding;
+    $knob-width: $knob-height;
+
+    position: relative;
+    display: inline-block;
+    width: $width;
+    height: $height;
+    border: 1px solid #bbb;
+    box-shadow: inset 1px 1px 1px 0 rgba(0, 0, 0, 50%);
+
+    /* The slider */
+    .knob {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ddd;
+        -webkit-transition: .3s;
+        transition: .3s;
+
+        &:before {
+            position: absolute;
+            content: "";
+            height: $knob-height;
+            width: $knob-width;
+            left: $padding;
+            bottom: $padding;
+            background-color: #bbb;
+            -webkit-transition: .3s;
+            transition: .3s;
+            box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 50%);
+        }
+    }
+
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+
+        &:checked + .knob {
+            background-color: #d3d3d3;
+        }
+
+        &:checked + .knob:before {
+            -webkit-transform: translateX($width - $knob-width - $padding * 2);
+            -ms-transform: translateX($knob-width);
+            transform: translateX($width - $knob-width - $padding * 2);
+        }
+    }
+}

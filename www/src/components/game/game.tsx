@@ -16,6 +16,7 @@ import {
 } from '../controls';
 import { Fps } from '../fps';
 import { GameSection } from '../game-section';
+import { PowerSwitch } from '../power-switch';
 import { Screen } from '../screen';
 import { SettingsState } from '../settings/store';
 import { isMobile } from '../../utils';
@@ -69,7 +70,6 @@ const isRectIn = (offsetX: number, offsetY: number, t: Touch, rect: GCRect, scal
          && t.clientY >= (cy - t.radiusY)
          && t.clientY <= (cy + rect.height * scale + border + t.radiusY));
 };
-
 
 class GameComponent extends Component<Props, State> {
     private _gameRef = createRef();
@@ -197,6 +197,10 @@ class GameComponent extends Component<Props, State> {
     }
 
     public stop() {
+        if (this.emu) {
+            this.emu.reset();
+        }
+        this._screenRef.current.clear();
         this.setState({ isRunning: false });
     }
 
@@ -246,6 +250,13 @@ class GameComponent extends Component<Props, State> {
                         width: DEFAULT_HOUSING_WIDTH * scale,
                         height: DEFAULT_HOUSING_HEIGHT * scale
                     }}>
+                        <PowerSwitch x={33}
+                                     y={6}
+                                     width={75}
+                                     height={18}
+                                     scale={scale}
+                                     toggled={this.state.isRunning}
+                                     onChange={(toggled) => toggled ? this.run() : this.stop()} />
                         <GameSection x={35}
                                        y={110}
                                        width={8}

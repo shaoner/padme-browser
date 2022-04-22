@@ -42,6 +42,14 @@ class ScreenComponent extends Component<Props> {
             }
         }
     }
+
+    public clear(): void {
+        const canvas = this._canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    }
 }
 
 export const Screen = connectStoreon('settings', ScreenComponent);
