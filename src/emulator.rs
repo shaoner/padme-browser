@@ -54,6 +54,11 @@ impl Emulator {
         self.sys.screen().framebuffer()
     }
 
+    pub fn reset(&mut self) {
+        self.sys.screen().clear();
+        self.sys.reset();
+    }
+
     pub fn set_button(&mut self, button: WButton, is_pressed: bool) {
         match button {
             WButton::A => self.sys.set_button(Button::A, is_pressed),
