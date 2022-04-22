@@ -4,27 +4,50 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 const common = require('./common');
 
+const webpack = require('webpack');
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const prodConfig = {
     mode: 'production',
     module: {
-        rules: [{
-            ...common.cssRule({ sourceMap: true, importLoaders: 1, modules: true }, true),
-            include: [
-                common.dirs.components,
-            ],
-        }, {
-            ...common.cssRule({ importLoaders: 2 }),
-            exclude: [
-                common.dirs.components,
-            ],
-        }],
+        rules: [
+            {
+                ...common.cssRule({ sourceMap: true, importLoaders: 1, modules: true }, true),
+                include: [
+                    common.dirs.components,
+                ],
+            },
+            {
+                test: /\.scss$/,
+                exclude: [
+                    common.dirs.components,
+                ],
+
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true,
+                            sassOptions: {
+                                quietDeps: true,
+                            }
+                        }
+                    }
+                ]
+            }
+        ],
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'styles/[name].[contenthash:5].css',
-            chunkFilename: '[name].chunk.[contenthash:5].css',
+            filename: 'css/[name].[contenthash:5].css',
+            chunkFilename: 'css/[name].chunk.[contenthash:5].css',
         }),
         new CopyPlugin({
             patterns: [

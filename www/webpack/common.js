@@ -45,9 +45,9 @@ module.exports.dirs = {
 module.exports.webpack = {
     output: {
         path: buildDir,
-        filename: '[name].[fullhash:8].js',
-        sourceMapFilename: '[name].[fullhash:8].map',
-        chunkFilename: '[name].chunk.[chunkhash:5].js',
+        filename: 'js/[name].[fullhash:8].js',
+        sourceMapFilename: 'js/[name].[fullhash:8].map',
+        chunkFilename: 'js/[name].chunk.[chunkhash:5].js',
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js'],
