@@ -10,12 +10,12 @@ type Props = {
 
 const PowerSwitch: FunctionalComponent<Props> = ({ toggled, onChange, ...props }) => (
     <GameSection className={style.powerswitch} {...props}>
-        OFF
+        <div class={style.arrowleft}></div><span class={style.label}>OFF</span>
         <label class={style.switch}>
             <input type="checkbox" checked={toggled} onChange={() => onChange(!toggled)} />
             <span class={style.knob}></span>
         </label>
-        ON
+        <span class={style.label}>ON</span><div class={style.arrowright}></div>
     </GameSection>
 );
 export { PowerSwitch };

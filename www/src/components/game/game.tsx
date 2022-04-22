@@ -251,7 +251,7 @@ class GameComponent extends Component<Props, State> {
                         height: DEFAULT_HOUSING_HEIGHT * scale
                     }}>
                         <PowerSwitch x={33}
-                                     y={6}
+                                     y={4}
                                      width={75}
                                      height={18}
                                      scale={scale}
