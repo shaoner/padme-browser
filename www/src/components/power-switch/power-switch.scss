@@ -1,15 +1,16 @@
 @use 'sass:math';
+@import "../../style/variables.sass";
 
 .powerswitch {
     $color: #aaa;
 
     display: flex;
     gap: 4px;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
 
     .label {
-        font-size: 0.8rem;
+        font-size: $size-7;
         color: $color;
     }
 
@@ -34,12 +35,11 @@
     }
 }
 
-
 .switch {
     $height: 14px;
     $width: 34px;
     $padding: 0;
-    $knob-height: $height - 2 * $padding;
+    $knob-height: $height + 2px;
     $knob-width: $knob-height;
     $knob-color: #d3d3d3;
     $knob-bg-color: #bbb;
@@ -69,7 +69,7 @@
             height: $knob-height;
             width: $knob-width;
             left: $padding - 1px;
-            bottom: $padding - 1px;
+            bottom: $padding - 2px;
             background-color: $knob-bg-color;
             -webkit-transition: .3s;
             transition: .3s;
