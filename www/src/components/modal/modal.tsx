@@ -2,8 +2,6 @@ import { FunctionalComponent, VNode, h } from 'preact';
 import { createPortal } from 'preact/compat';
 import { useRef, useState, useLayoutEffect } from 'preact/hooks';
 
-import style from './modal.scss';
-
 type PortalProps = {
     wrapperId: string;
     children: VNode<any> | VNode<any>[];
@@ -51,27 +49,26 @@ type Props = {
 };
 
 const Modal: FunctionalComponent<Props> = ({ children, isOpen, onClose, title }) => {
-    const innerEl = useRef(null);
-    let modalClass = style.modal;
-    if (isOpen) {
-        modalClass += ` ${style.open}`;
-    }
+    const bgEl = useRef(null);
     const onDiscard = (e: MouseEvent) => {
-        if (e.target as HTMLElement == innerEl.current) {
+        if (e.target as HTMLElement == bgEl.current) {
             onClose();
         }
     };
+
     return (
         <Portal wrapperId="modals">
-            <div class={modalClass} onClick={onDiscard}>
-                <div ref={innerEl} class={style.inner}>
-                    <div class={style.content}>
-                        <div class={style.header}>
-                            <h5 class={style.title}>{title}</h5>
-                            <button onClick={onClose} class={style.close}></button>
-                        </div>
-                        <div class={style.body}>{children}</div>
-                    </div>
+            <div class={`modal ${isOpen ? 'is-active' : ''}`}>
+                <div ref={bgEl} class="modal-background" onClick={onDiscard}></div>
+                <div class="modal-card">
+                    <header class="modal-card-head">
+                        <p class="modal-card-title">{title}</p>
+                        <button class="delete" aria-label="close" onClick={onClose}></button>
+                    </header>
+                    <section class="modal-card-body">
+                        {children}
+                    </section>
+                    <footer class="modal-card-foot"></footer>
                 </div>
             </div>
         </Portal>
