@@ -1,41 +1,13 @@
-@import 'variables';
-@import 'node_modules/skeleton-scss/scss/skeleton.scss';
-
-@import './form.scss';
-@import './icons.scss';
-@import './responsive.scss';
-
-:root {
-    /* global */
-    --bg-color: #{$bg-color};
-    --text-color: #{$text-color};
-    --padding: #{$padding};
-    --border-color: #{$border-color};
-    --border-dark-color: #{$border-dark-color};
-    --border-radius: #{$border-radius};
-
-    /* header */
-    --header-bg-color: #{$header-bg-color};
-    --header-brand-color: #{$header-brand-color};
-    --header-brand-font-size: #{$header-brand-font-size};
-    --header-height: #{$header-height};
-    /* modals */
-    --modal-bg-color: #{$modal-bg-color};
-    --modal-text-color: #{$modal-text-color};
-    /* footer */
-    --footer-height: #{$footer-height};
-    --footer-bg-color: #{$footer-bg-color};
-    --footer-text-color: #{$footer-text-color};
-    --footer-font-size: #{$footer-font-size};
-}
+@import "./variables.sass";
+@import "./bulma/bulma.scss";
+@import "./form.scss";
+@import "./icons.scss";
 
 html, body {
     height: 100%;
     width: 100%;
     padding: 0;
     margin: 0;
-    background: var(--bg-color);
-    color: var(--text-color);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -44,12 +16,4 @@ html, body {
     height: 100%;
     display: flex;
     flex-direction: column;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-a {
-    text-decoration: none;
 }

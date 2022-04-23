@@ -1,0 +1,43 @@
+@import "../variables.sass";
+@import "./derived-variables.sass";
+
+// Additional customization
+// Global
+$body-overflow-y: auto;
+// Navbar
+$navbar-box-shadow-size: 0 1px 0 0;
+// Modal
+$modal-card-head-background-color: $scheme-main;
+$modal-card-foot-border-top: 0px;
+$modal-card-head-padding: 10px;
+// Layout
+$footer-padding: 0.5rem;
+// Sections
+$section-padding: 1.0rem 0.75rem;
+$section-padding-desktop: 1.0rem 1.0rem;
+$section-padding-medium: 3rem 1.75rem;
+$section-padding-large: 9rem 3rem;
+// Input files
+$file-cta-background-color: $scheme-main;
+
+// Bulma components
+@import "~bulma/sass/utilities/_all.sass";
+@import "~bulma/sass/base/_all.sass";
+@import "~bulma/sass/elements/button.sass";
+@import "~bulma/sass/elements/container.sass";
+@import "~bulma/sass/elements/icon.sass";
+@import "~bulma/sass/elements/table.sass";
+@import "~bulma/sass/elements/title.sass";
+@import "~bulma/sass/elements/other.sass";
+@import "~bulma/sass/form/_all.sass";
+@import "~bulma/sass/components/modal.sass";
+@import "~bulma/sass/components/navbar.sass";
+@import "~bulma/sass/grid/_all.sass";
+@import "~bulma/sass/helpers/spacing.sass";
+@import "~bulma/sass/helpers/typography.sass";
+@import "~bulma/sass/helpers/visibility.sass";
+@import "~bulma/sass/layout/section.sass";
+@import "~bulma/sass/layout/footer.sass";
+
+// Override some css
+@import "./fix.scss";

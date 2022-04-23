@@ -1,3 +1,8 @@
+$icon-font-family: "padme" !default;
+$font-path: "fonts" !default;
+$icon-cog: "\e994";
+$icon-question: "\ea09";
+
 @font-face {
     font-family: '#{$icon-font-family}';
     src:  url('#{$font-path}/#{$icon-font-family}.eot?46huf2');
@@ -10,7 +15,7 @@
     font-display: block;
 }
 
-.icon {
+.padme {
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: '#{$icon-font-family}' !important;
     speak: never;

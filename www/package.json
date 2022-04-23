@@ -14,6 +14,7 @@
   "dependencies": {
     "@babel/runtime": "^7.17.9",
     "@storeon/localstorage": "^1.4.0",
+    "bulma": "^0.9.3",
     "padme-wasm": "../pkg",
     "preact": "^10.6.4",
     "sirv-cli": "^2.0.2",
