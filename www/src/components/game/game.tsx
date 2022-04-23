@@ -241,69 +241,68 @@ class GameComponent extends Component<Props, State> {
             scale = window.screen.width / DEFAULT_HOUSING_WIDTH;
         }
         return (
-            <div class={style.container}>
-                <div class={style.subcontainer}>
-                    <CartridgeLoader onload={(f) => {
-                        this.loadCartridge(f);
-                    }}/>
-                    <div ref={this._gameRef} class={style.game} style={{
-                        width: DEFAULT_HOUSING_WIDTH * scale,
-                        height: DEFAULT_HOUSING_HEIGHT * scale
-                    }}>
-                        <PowerSwitch x={33}
-                                     y={4}
-                                     width={75}
-                                     height={18}
-                                     scale={scale}
-                                     toggled={this.state.isRunning}
-                                     onChange={(toggled) => toggled ? this.run() : this.stop()} />
-                        <GameSection x={35}
-                                       y={110}
-                                       width={8}
-                                       height={8}
-                                       scale={scale}
-                                       className={style.indicator + (this.state.isRunning ? ` ${style.active}` : '')} />
-                        <Screen ref={this._screenRef}
-                                x={60}
-                                y={57}
-                                width={160}
-                                height={144}
-                                scale={scale} />
-                        <ControlDir x={DEFAULT_CTRL.UP.x}
-                                    y={DEFAULT_CTRL.UP.y}
-                                    scale={scale}
-                                    active={this.state.key_Up_active} />
-                        <ControlDir x={DEFAULT_CTRL.DOWN.x}
-                                    y={DEFAULT_CTRL.DOWN.y}
-                                    scale={scale}
-                                    active={this.state.key_Down_active} />
-                        <ControlDir x={DEFAULT_CTRL.LEFT.x}
-                                    y={DEFAULT_CTRL.LEFT.y}
-                                    scale={scale}
-                                    active={this.state.key_Left_active} />
-                        <ControlDir x={DEFAULT_CTRL.RIGHT.x}
-                                    y={DEFAULT_CTRL.RIGHT.y}
-                                    scale={scale}
-                                    active={this.state.key_Right_active} />
-                        <ControlAction x={DEFAULT_CTRL.A.x}
-                                       y={DEFAULT_CTRL.A.y}
-                                       scale={scale}
-                                       active={this.state.key_A_active} />
-                        <ControlAction x={DEFAULT_CTRL.B.x}
-                                       y={DEFAULT_CTRL.B.y}
-                                       scale={scale}
-                                       active={this.state.key_B_active} />
-                        <ControlS x={DEFAULT_CTRL.SELECT.x}
-                                  y={DEFAULT_CTRL.SELECT.y}
-                                  scale={scale}
-                                  active={this.state.key_Select_active} />
-                        <ControlS x={DEFAULT_CTRL.START.x}
-                                  y={DEFAULT_CTRL.START.y}
-                                  scale={scale}
-                                  active={this.state.key_Start_active} />
-                    </div>
-                    <Fps ref={this._fpsRef} />
+            <div class={style.container} style={{
+                width: DEFAULT_HOUSING_WIDTH * scale,
+            }}>
+                <CartridgeLoader onload={(f) => {
+                    this.loadCartridge(f);
+                }}/>
+                <div ref={this._gameRef} class={style.game} style={{
+                    height: DEFAULT_HOUSING_HEIGHT * scale,
+                }}>
+                    <PowerSwitch x={33}
+                                 y={4}
+                                 width={80}
+                                 height={18}
+                                 scale={scale}
+                                 toggled={this.state.isRunning}
+                                 onChange={(toggled) => toggled ? this.run() : this.stop()} />
+                    <GameSection x={35}
+                                 y={110}
+                                 width={8}
+                                 height={8}
+                                 scale={scale}
+                                 className={style.indicator + (this.state.isRunning ? ` ${style.active}` : '')} />
+                    <Screen ref={this._screenRef}
+                            x={60}
+                            y={57}
+                            width={160}
+                            height={144}
+                            scale={scale} />
+                    <ControlDir x={DEFAULT_CTRL.UP.x}
+                                y={DEFAULT_CTRL.UP.y}
+                                scale={scale}
+                                active={this.state.key_Up_active} />
+                    <ControlDir x={DEFAULT_CTRL.DOWN.x}
+                                y={DEFAULT_CTRL.DOWN.y}
+                                scale={scale}
+                                active={this.state.key_Down_active} />
+                    <ControlDir x={DEFAULT_CTRL.LEFT.x}
+                                y={DEFAULT_CTRL.LEFT.y}
+                                scale={scale}
+                                active={this.state.key_Left_active} />
+                    <ControlDir x={DEFAULT_CTRL.RIGHT.x}
+                                y={DEFAULT_CTRL.RIGHT.y}
+                                scale={scale}
+                                active={this.state.key_Right_active} />
+                    <ControlAction x={DEFAULT_CTRL.A.x}
+                                   y={DEFAULT_CTRL.A.y}
+                                   scale={scale}
+                                   active={this.state.key_A_active} />
+                    <ControlAction x={DEFAULT_CTRL.B.x}
+                                   y={DEFAULT_CTRL.B.y}
+                                   scale={scale}
+                                   active={this.state.key_B_active} />
+                    <ControlS x={DEFAULT_CTRL.SELECT.x}
+                              y={DEFAULT_CTRL.SELECT.y}
+                              scale={scale}
+                              active={this.state.key_Select_active} />
+                    <ControlS x={DEFAULT_CTRL.START.x}
+                              y={DEFAULT_CTRL.START.y}
+                              scale={scale}
+                              active={this.state.key_Start_active} />
                 </div>
+                <Fps ref={this._fpsRef} />
             </div>
         );
     }
