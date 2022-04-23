@@ -28,7 +28,7 @@ const InputKey: FunctionalComponent<Props> = ({ onKey, code }) => {
     };
     return (
         <input ref={inputRef}
-               class={style.key}
+               class={`input is-small ${style.key}`}
                readonly={true}
                type={'text'}
                value={keyCodes[code]}
