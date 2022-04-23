@@ -1,26 +1,9 @@
-.container {
-    padding: var(--padding);
+@import "../../style/variables.sass";
 
+.container {
     label {
         display: inline-block;
         margin-right: 0.3rem;
-    }
-
-    .separator {
-        width: 100%;
-        height: 1px;
-        border-bottom: 1px solid var(--border-color);
-    }
-
-    table.global {
-        td {
-            border-bottom: 0;
-            padding: 5px 10px;
-            > * {
-                max-width: 100px;
-            }
-        }
-        margin-bottom: 0;
     }
 }
 
@@ -61,8 +44,13 @@
 }
 
 .keymap {
+    border-spacing: 0;
+    text-align: center;
+
     td {
-        text-align: center;
+        padding: 0.25em 0.5em;
+        border: 1px solid $white-ter;
+        border-width: 0 0 1px;
     }
 
     td.input {
@@ -86,11 +74,13 @@
 
     .controls {
         background-color: #ddd;
-        border-radius: var(--border-radius);
+        font-weight: bold;
+        font-size: $size-7;
+        border-radius: $radius;
         color: #0000ff;
-        font-size: 1.1rem;
         width: 60px;
         text-align: center;
         height: 20px;
+        line-height: 20px;
     }
 }

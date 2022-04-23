@@ -19,43 +19,58 @@ const Settings: FunctionalComponent<Props> = ({ isOpen, onClose }) => {
     return (
         <Modal title={'Settings'} isOpen={isOpen} onClose={onClose}>
             <div class={style.container}>
-                <table class={style.global}>
-                    <tr>
-                        <td>
-                            <label for="scale-input">Scale</label>
-                        </td>
-                        <td>
-                            <input type="range" onInput={(e) => {
-                                e.target && dispatch('settings/scale/update', (e.target as HTMLInputElement).value)
-                            }} step={0.1} min={1} max={3} id="scale-input" value={settings.scale} />
-                        </td>
-                        <td>
-                            <label for="style-input">Style</label>
-                        </td>
-                        <td>
-                            <select id="style-input" value={settings.styleName} onChange={(e) => {
-                                e.target && dispatch('settings/style/update', (e.target as HTMLSelectElement).value)
-                            }}>
-                                <option value="nostyle">No style</option>
-                                <option value="classic">Retro</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="max-fps-input">Max FPS</label>
-                        </td>
-                        <td>
-                            <input id="max-fps-input" type="number" onInput={(e) => {
-                                e.target && dispatch('settings/max-fps/update', (e.target as HTMLInputElement).value)
-                            }} step={1} min={1} max={200} value={settings.maxFps} />
-                        </td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
-                <div class={style.separator}/>
-                <table class={style.keymap} style={{ display: isMobile() ? 'none' : 'block' }}>
+                <div class="columns">
+                    <div class="column is-two-thirds">
+                        <div class="field is-horizontal">
+                            <div class="field-label">
+                                <label class="label">Scale</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input type="range" onInput={(e) => {
+                                            e.target && dispatch('settings/scale/update', (e.target as HTMLInputElement).value)
+                                        }} step={0.1} min={1} max={3} id="scale-input" value={settings.scale} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label">
+                                <label class="label">Style</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <div class="select">
+                                            <select id="style-input" value={settings.styleName} onChange={(e) => {
+                                                e.target && dispatch('settings/style/update', (e.target as HTMLSelectElement).value)
+                                            }}>
+                                                <option value="nostyle">No style</option>
+                                                <option value="classic">Retro</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label">
+                                <label class="label">Max FPS</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input class="input" id="max-fps-input" type="number" onInput={(e) => {
+                                            e.target && dispatch('settings/max-fps/update', (e.target as HTMLInputElement).value)
+                                        }} step={1} min={1} max={200} value={settings.maxFps} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table class={`${style.keymap} is-size-6`} style={{ display: isMobile() ? 'none' : 'block' }}>
                     <tr>
                         <td>
                             <label class={style.controldir} for="up-input">
