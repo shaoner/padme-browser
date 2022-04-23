@@ -14,7 +14,7 @@ const CartridgeLoader: FunctionalComponent<Props> = (props) => {
     return (
         <div class="file has-name is-fullwidth">
             <label class="file-label">
-                <input class="file-input" type="file" name="resume" onChange={(e) => {
+                <input class="file-input" accept=".gb" type="file" name="resume" onChange={(e) => {
                 dispatch('cartridge/unload');
                 const files = (e.target as HTMLInputElement).files;
                 if (files && files.length > 0) {
