@@ -4,7 +4,7 @@ import { StoreContext } from 'storeon/preact';
 import { CartridgeInfo } from './cartridge-info';
 import { NavBar } from './navbar';
 import { Game } from './game';
-import { Header, Content, Footer, Panel } from './layout';
+import { Header, Content, Footer, MainPanel, SidePanel } from './layout';
 
 import store from '../store';
 
@@ -14,14 +14,14 @@ const App: FunctionalComponent = () => (
             <NavBar />
         </Header>
         <Content>
-            <Panel>
-                <div class="hidden-sm">
-                    <CartridgeInfo />
-                </div>
-            </Panel>
-            <Panel>
+            <SidePanel>
+                <CartridgeInfo />
+            </SidePanel>
+            <MainPanel>
                 <Game />
-            </Panel>
+            </MainPanel>
+            <SidePanel>
+            </SidePanel>
         </Content>
         <Footer>
             v{process.env.VERSION} | <a href={process.env.GIT_LINK}>{process.env.GIT_SHA}</a>
