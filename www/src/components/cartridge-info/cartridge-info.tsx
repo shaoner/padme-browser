@@ -26,7 +26,7 @@ const CartridgeInfo: FunctionalComponent<{}> = () => {
                 <div class={style.title}>{title}</div>
             </div>
             <div class={style.body}>
-                <table>
+                <table class="is-size-7">
                     <tr>
                         <td>Cartridge type:</td><td class={style.value}>{type}</td>
                     </tr>
