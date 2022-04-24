@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  RUST_TOOLCHAIN_VERSION: nightly
+  RUST_TOOLCHAIN_VERSION: nightly-2022-04-15
 
 jobs:
   build:
