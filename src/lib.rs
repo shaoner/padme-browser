@@ -1,6 +1,5 @@
 use wasm_bindgen::prelude::*;
 
-
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.
 #[cfg(feature = "wee_alloc")]
@@ -13,7 +12,7 @@ mod lcd;
 mod serial;
 
 pub use cartridge::Cartridge;
-pub use emulator::{WButton, Emulator};
+pub use emulator::{Emulator, WButton};
 pub use lcd::Lcd;
 pub use serial::SerialConsole;
 

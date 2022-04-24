@@ -1,5 +1,5 @@
-use wasm_bindgen::prelude::*;
 use padme_core::{Button, System};
+use wasm_bindgen::prelude::*;
 
 use crate::{Cartridge, Lcd, SerialConsole};
 
@@ -17,7 +17,7 @@ pub enum WButton {
 
 #[wasm_bindgen]
 pub struct Emulator {
-    sys: System<Vec<u8>, Lcd, SerialConsole>
+    sys: System<Vec<u8>, Lcd, SerialConsole>,
 }
 
 #[wasm_bindgen]
@@ -27,7 +27,7 @@ impl Emulator {
             sys: System::new(
                 cartridge.rom(),
                 Lcd::new(),
-                SerialConsole::new(on_serial_handler)
+                SerialConsole::new(on_serial_handler),
             ),
         }
     }
@@ -37,7 +37,9 @@ impl Emulator {
     }
 
     pub fn load_bin(&mut self, bin: Vec<u8>) -> Result<(), JsValue> {
-        self.sys.load_bin(bin).map_err(| _ | { JsValue::from(format!("Invalid rom")) })?;
+        self.sys
+            .load_bin(bin)
+            .map_err(|_| JsValue::from("Invalid rom".to_string()))?;
         Ok(())
     }
 

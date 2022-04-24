@@ -1,4 +1,4 @@
-use padme_core::{Pixel, Screen, FRAME_WIDTH, FRAME_HEIGHT};
+use padme_core::{Pixel, Screen, FRAME_HEIGHT, FRAME_WIDTH};
 
 const FRAMEBUFFER_SIZE: usize = FRAME_WIDTH * FRAME_HEIGHT * 4;
 
@@ -8,7 +8,9 @@ pub struct Lcd {
 
 impl Lcd {
     pub const fn new() -> Self {
-        Self { framebuffer: [0x00u8; FRAMEBUFFER_SIZE] }
+        Self {
+            framebuffer: [0x00u8; FRAMEBUFFER_SIZE],
+        }
     }
 
     pub fn framebuffer(&self) -> *const u8 {
@@ -16,7 +18,7 @@ impl Lcd {
     }
 
     pub fn clear(&mut self) {
-        self.framebuffer.iter_mut().for_each(| p | *p = 0);
+        self.framebuffer.iter_mut().for_each(|p| *p = 0);
     }
 }
 
@@ -29,6 +31,5 @@ impl Screen for Lcd {
         self.framebuffer[i + 3] = px.a;
     }
 
-    fn update(&mut self) {
-    }
+    fn update(&mut self) {}
 }

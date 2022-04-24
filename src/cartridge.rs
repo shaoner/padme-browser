@@ -1,9 +1,9 @@
-use wasm_bindgen::prelude::*;
 use padme_core::Rom;
+use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
 pub struct Cartridge {
-    rom: Rom<Vec<u8>>
+    rom: Rom<Vec<u8>>,
 }
 
 impl Cartridge {
@@ -15,7 +15,7 @@ impl Cartridge {
 #[wasm_bindgen]
 impl Cartridge {
     pub fn new(bin: Vec<u8>) -> Result<Cartridge, JsValue> {
-        let rom = Rom::load(bin).map_err(| _ | { JsValue::from(format!("Invalid rom")) })?;
+        let rom = Rom::load(bin).map_err(|_| JsValue::from("Invalid rom".to_string()))?;
 
         Ok(Cartridge { rom })
     }
