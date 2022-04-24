@@ -16,9 +16,7 @@ impl Lcd {
     }
 
     pub fn clear(&mut self) {
-        for i in 0..FRAMEBUFFER_SIZE {
-            self.framebuffer[i] = 0x00;
-        }
+        self.framebuffer.iter_mut().for_each(| p | *p = 0);
     }
 }
 
