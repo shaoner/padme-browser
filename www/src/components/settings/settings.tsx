@@ -68,6 +68,20 @@ const Settings: FunctionalComponent<Props> = ({ isOpen, onClose }) => {
                                 </div>
                             </div>
                         </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label">
+                                <label class="label">Serial port</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input type="checkbox" checked={settings.serialEnabled} onInput={(e) => {
+                                            e.target && dispatch('settings/serial/update', (e.target as HTMLInputElement).checked)
+                                        }} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <table class={`${style.keymap} is-size-6`} style={{ display: isMobile() ? 'none' : 'block' }}>

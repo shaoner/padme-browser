@@ -11,6 +11,7 @@ interface State {
             [name: number]: number;
         };
         maxFps: number;
+        serialEnabled: boolean;
     }
 }
 
@@ -22,6 +23,7 @@ interface Events {
     'settings/scale/update': number;
     'settings/style/update': string;
     'settings/max-fps/update': number;
+    'settings/serial/update': boolean;
 }
 
 const initialState = {
@@ -38,6 +40,7 @@ const initialState = {
         [WButton.Start]: keyCodes.ENTER,
     },
     maxFps: 60,
+    serialEnabled: false,
 };
 
 const storeHandler: StoreonModule<State, Events> = (store) => {
@@ -60,6 +63,10 @@ const storeHandler: StoreonModule<State, Events> = (store) => {
     store.on('settings/max-fps/update', ({ settings }, maxFps) => (
         { settings: { ...settings, maxFps } }
     ));
+
+    store.on('settings/serial/update', ({ settings }, serialEnabled) => (
+        { settings: { ...settings, serialEnabled } }
+    ))
 };
 
 export { State as SettingsState };
