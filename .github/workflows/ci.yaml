@@ -1,0 +1,95 @@
+name: Tests
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  TOOLCHAIN_VERSION: nightly-2022-04-15
+
+jobs:
+  formatting:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - uses: actions/cache@v2
+        id: toolchain
+        with:
+          path: |
+            ~/.cargo/bin/
+          key: ${{ runner.os }}-cargo-${{ env.TOOLCHAIN_VERSION }}
+
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-deps-${{ hashFiles('**/Cargo.toml') }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v2.4.1
+        with:
+          node-version: '14'
+          cache: 'npm'
+          cache-dependency-path: 'www/package-lock.json'
+
+      - uses: actions-rs/toolchain@v1.0.6
+        if: steps.toolchain.outputs.cache-hit != 'true'
+        with:
+          toolchain: ${{ env.TOOLCHAIN_VERSION }}
+          components: rustfmt
+          override: true
+
+      - name: Setup wasm-pack
+        run: 'curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh'
+
+      - name: Build padme-wasm
+        run: 'wasm-pack build --features console_error_panic_hook --features --features console_log'
+
+      - name: Install padme-browser deps
+        run: npm install
+        working-directory: ./www
+
+      - name: Check padme-wasm formatting
+        run: cargo fmt -p padme-wasm -- --check
+
+      - name: Check padme-browser formatting
+        run: npm run lint
+        working-directory: ./www
+  lint:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - uses: actions/cache@v2
+        id: toolchain
+        with:
+          path: |
+            ~/.cargo/bin/
+          key: ${{ runner.os }}-cargo-${{ env.TOOLCHAIN_VERSION }}
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-deps-${{ hashFiles('**/Cargo.toml') }}
+      - uses: actions-rs/toolchain@v1.0.6
+        if: steps.toolchain.outputs.cache-hit != 'true'
+        with:
+          toolchain: ${{ env.TOOLCHAIN_VERSION }}
+          components: clippy
+          override: true
+      - name: Check style
+        run: cargo clippy -- -A clippy::unused_unit 
