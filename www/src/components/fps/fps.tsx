@@ -2,7 +2,7 @@ import { Component, h } from 'preact';
 
 import style from './fps.scss';
 
-type Props = {};
+type Props = Record<string, unknown>;
 
 type State = {
     fps: number;

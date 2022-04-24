@@ -7,7 +7,7 @@
     "start": "webpack serve --config webpack/dev.js",
     "serve": "sirv build --port 8080 --cors --single",
     "build": "webpack --config webpack/prod.js",
-    "lint": "eslint src tests --fix"
+    "lint": "eslint src && tsc --noEmit"
   },
   "author": "Alex Ren <shaoner@pm.me>",
   "license": "MIT",

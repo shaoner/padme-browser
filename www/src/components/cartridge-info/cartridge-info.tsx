@@ -3,7 +3,7 @@ import { useStoreon } from 'storeon/preact';
 
 import style from './cartridge-info.scss';
 
-const CartridgeInfo: FunctionalComponent<{}> = () => {
+const CartridgeInfo: FunctionalComponent = () => {
     const {
         cartridge: {
             loaded,

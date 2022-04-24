@@ -150,7 +150,7 @@ class GameComponent extends Component<Props, State> {
     private _handleKeyPress(keyCode: number, isPressed: boolean) {
         const keyMap: { [name: number]: number } = this.props.settings.keys;
 
-        for (let name in keyMap) {
+        for (const name in keyMap) {
             const code = keyMap[name];
 
             if (code == keyCode) {

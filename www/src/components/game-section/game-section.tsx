@@ -7,7 +7,7 @@ interface Props {
     height: number;
     className?: string;
     scale?: number;
-};
+}
 
 const GameSection: FunctionalComponent<Props> = ({
     x,

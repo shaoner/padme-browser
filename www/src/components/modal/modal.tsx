@@ -4,7 +4,7 @@ import { useRef, useState, useLayoutEffect } from 'preact/hooks';
 
 type PortalProps = {
     wrapperId: string;
-    children: VNode<any> | VNode<any>[];
+    children: VNode | VNode[];
 }
 
 const createWrapperElement = (wrapperId: string): HTMLElement => {
@@ -39,7 +39,7 @@ const Portal: FunctionalComponent<PortalProps> = ({ children, wrapperId }) => {
         return null;
     }
 
-    return createPortal(children as VNode<any>, wrapperElement);
+    return createPortal(children as VNode, wrapperElement);
 }
 
 type Props = {
