@@ -19,6 +19,8 @@ $section-padding-medium: 3rem 1.75rem;
 $section-padding-large: 9rem 3rem;
 // Input files
 $file-cta-background-color: $scheme-main;
+// Message
+$message-body-padding: 0;
 
 // Bulma components
 @import "~bulma/sass/utilities/_all.sass";
@@ -30,6 +32,7 @@ $file-cta-background-color: $scheme-main;
 @import "~bulma/sass/elements/title.sass";
 @import "~bulma/sass/elements/other.sass";
 @import "~bulma/sass/form/_all.sass";
+@import "~bulma/sass/components/message.sass";
 @import "~bulma/sass/components/modal.sass";
 @import "~bulma/sass/components/navbar.sass";
 @import "~bulma/sass/grid/_all.sass";
