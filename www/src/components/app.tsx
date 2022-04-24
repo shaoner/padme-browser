@@ -5,6 +5,7 @@ import { CartridgeInfo } from './cartridge-info';
 import { NavBar } from './navbar';
 import { Game } from './game';
 import { Header, Content, Footer, MainPanel, SidePanel } from './layout';
+import { SerialConsole } from './serial-console';
 
 import store from '../store';
 
@@ -21,6 +22,7 @@ const App: FunctionalComponent = () => (
                 <Game />
             </MainPanel>
             <SidePanel>
+                <SerialConsole />
             </SidePanel>
         </Content>
         <Footer>

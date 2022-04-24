@@ -16,7 +16,7 @@ const Content: FunctionalComponent = ({ children }) => (
 
 const SidePanel: FunctionalComponent = ({ children }) => (
     <div class="column is-hidden-touch">
-        <div style={{minWidth: '200px'}}>
+        <div class="pt-4" style={{minWidth: '200px'}}>
             {children}
         </div>
     </div>
