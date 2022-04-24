@@ -1,5 +1,6 @@
 import { Cartridge, Emulator, WButton } from 'padme-wasm';
 import { Component, createRef, h } from 'preact';
+import { StoreonDispatch } from 'storeon';
 import { connectStoreon } from 'storeon/preact';
 
 import { CartridgeLoader } from '../cartridge-loader';
@@ -19,6 +20,7 @@ import { GameSection } from '../game-section';
 import { PowerSwitch } from '../power-switch';
 import { Screen } from '../screen';
 import { SettingsState } from '../settings/store';
+import { type Events } from '../../store';
 import { isMobile } from '../../utils';
 
 import style from './game.scss';
@@ -48,6 +50,7 @@ const DEFAULT_CTRL: {
 
 type Props = {
     settings: SettingsState['settings'];
+    dispatch: StoreonDispatch<Events>;
 };
 
 type State = {
@@ -179,7 +182,9 @@ class GameComponent extends Component<Props, State> {
     public async loadCartridge(cartridge: Cartridge) {
         if (!this.emu) {
             // empty serial function for now
-            this.emu = Emulator.new(cartridge, () => undefined);
+            this.emu = Emulator.new(cartridge, (c: number) => {
+                this.props.dispatch('serial/putchar', String.fromCharCode(c))
+            });
             this._screenRef.current.setFramebuffer(this.emu.framebuffer());
         } else {
             this.emu.load_cartridge(cartridge);

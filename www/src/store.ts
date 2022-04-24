@@ -5,9 +5,9 @@ import settingsStore, { SettingsState, SettingsEvents } from './components/setti
 import cartridgeStore, { CartridgeState, CartridgeEvents } from './components/cartridge-loader/store';
 import serialStore, { SerialState, SerialEvents } from './components/serial-console/store';
 
-type State = SettingsState & CartridgeState & SerialState;
+export type State = SettingsState & CartridgeState & SerialState;
 
-type Events = SettingsEvents & CartridgeEvents & SerialEvents;
+export type Events = SettingsEvents & CartridgeEvents & SerialEvents;
 
 const store = createStoreon<State, Events>([
     settingsStore,
