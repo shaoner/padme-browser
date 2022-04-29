@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const srcDir = path.join(__dirname, '../src');
+const appDir = path.join(srcDir, 'app');
 const buildDir = path.join(__dirname, '../build');
 const publicDir = path.join(__dirname, '../public');
 
@@ -37,7 +38,7 @@ module.exports.cssRule = (cssOptions, isProd = false) => ({
 module.exports.dirs = {
     src: srcDir,
     build: buildDir,
-    components: path.join(srcDir, 'components'),
+    app: appDir,
     public: publicDir,
     assets: assetsDir,
 };
@@ -51,6 +52,10 @@ module.exports.webpack = {
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js'],
+        alias: {
+            '@': srcDir,
+            '@app': appDir,
+        },
         modules: [
             path.resolve(__dirname, '../node_modules'),
         ],

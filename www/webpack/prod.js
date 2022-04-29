@@ -17,13 +17,13 @@ const prodConfig = {
             {
                 ...common.cssRule({ sourceMap: true, importLoaders: 1, modules: true }, true),
                 include: [
-                    common.dirs.components,
+                    common.dirs.app,
                 ],
             },
             {
                 test: /\.scss$/,
                 exclude: [
-                    common.dirs.components,
+                    common.dirs.app,
                 ],
 
                 use: [

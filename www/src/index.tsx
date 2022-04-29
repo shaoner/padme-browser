@@ -1,6 +1,6 @@
 import { main } from 'padme-wasm';
 import { h, render } from 'preact';
-import App from './components/app';
+import App from './app/app';
 
 import './style/index.scss';
 

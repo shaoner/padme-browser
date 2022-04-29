@@ -13,13 +13,13 @@ const devConfig = {
             {
                 ...common.cssRule({ sourceMap: true, importLoaders: 1, modules: true }),
                 include: [
-                    common.dirs.components,
+                    common.dirs.app,
                 ],
             },
             {
                 ...common.cssRule({ sourceMap: true }),
                 exclude: [
-                    common.dirs.components,
+                    common.dirs.app,
                 ],
             }
         ],
