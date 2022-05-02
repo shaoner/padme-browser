@@ -25,8 +25,8 @@ const Help: FunctionalComponent<Props> = ({ isOpen, onClose }) => {
                     )}
                 </section>
                 <section class="section">
-                    <h6 class="title is-5">I found a bug</h6>
-                    <p class="is-size-6">Please send me an email at alexlt@pm.me</p>
+                    <h6 class="title is-5">Bugs or feature requests?</h6>
+                    <p class="is-size-6">Please send me an email at alexlt@pm.me or open an <a href="https://github.com/alexlren/padme-browser/issues">issue on github</a></p>
                 </section>
                 <section class="section">
                     <h6 class="title is-5">How is this emulator made?</h6>
