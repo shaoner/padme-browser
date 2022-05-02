@@ -1,6 +1,8 @@
 import { FunctionalComponent, h } from 'preact';
 
 import { Modal, type ModalProps } from '@app/components/modal';
+import { KeyMap } from '../settings/keymap';
+import { isMobile } from '@/utils';
 
 type Props = {
     isOpen: ModalProps['isOpen'];
@@ -12,9 +14,15 @@ const Help: FunctionalComponent<Props> = ({ isOpen, onClose }) => {
         <Modal title={'Help center'} isOpen={isOpen} onClose={onClose}>
             <div>
                 <section class="section">
-                    <h6 class="title is-5">How to find games?</h6>
-                    <p class="is-size-6">While I can't advertise games here, it's actually pretty easy to find them.</p>
-                    <p class="is-size-6">You could just type something close to <code>gameboy rom tetris</code> on any search engine.</p>
+                    <h6 class="title is-5">How to play?</h6>
+                    <p class="is-size-6 pb-2">1. Select a game. You can find games online, usually typing <code>gameboy rom tetris</code> on any search engine works.</p>
+                    {isMobile() ? (
+                       <p class="is-size-6">2. Each control is touchable</p>
+                    ) : (
+                        <p class="is-size-6">2. Use the following keyboard mapping:
+                            <KeyMap />
+                        </p>
+                    )}
                 </section>
                 <section class="section">
                     <h6 class="title is-5">I found a bug</h6>
