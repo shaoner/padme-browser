@@ -16,8 +16,15 @@ type Props = {
 const Settings: FunctionalComponent<Props> = ({ isOpen, onClose }) => {
     const { dispatch, settings } = useStoreon('settings');
 
+    const footer = (
+        <button class="button"
+                onClick={() => dispatch('settings/reset')}>
+            Reset to default
+        </button>
+    );
+
     return (
-        <Modal title={'Settings'} isOpen={isOpen} onClose={onClose}>
+        <Modal title={'Settings'} isOpen={isOpen} onClose={onClose} footer={footer}>
             <div class={style.container}>
                 <div class="columns">
                     <div class="column is-two-thirds">

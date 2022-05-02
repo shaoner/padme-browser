@@ -24,6 +24,7 @@ interface Events {
     'settings/style/update': string;
     'settings/max-fps/update': number;
     'settings/serial/update': boolean;
+    'settings/reset': void;
 }
 
 const initialState = {
@@ -67,6 +68,10 @@ const setupListeners: StoreonModule<State, Events> = (store) => {
     store.on('settings/serial/update', ({ settings }, serialEnabled) => (
         { settings: { ...settings, serialEnabled } }
     ))
+
+    store.on('settings/reset', () => ({
+        settings: initialState
+    }));
 };
 
 export { State as SettingsState };
