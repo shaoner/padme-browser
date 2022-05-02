@@ -3,12 +3,17 @@ import { useState } from 'preact/hooks';
 
 import { Help } from '../help';
 import { Settings } from '../settings';
+import { isFirstTime, resetFirstTime } from '@/utils';
 
 const NavBar: FunctionalComponent = () => {
+    const firstTime = isFirstTime();
     const [settingsOpen, setSettingsOpen] = useState(false);
-    const [helpOpen, setHelpOpen] = useState(false);
+    const [helpOpen, setHelpOpen] = useState(firstTime);
     const [menuActive, showMenu] = useState(false);
 
+    if (firstTime) {
+        resetFirstTime();
+    }
     return (
         <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
             <div class="navbar-menu"></div>
