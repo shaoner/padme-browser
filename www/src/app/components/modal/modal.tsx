@@ -1,4 +1,4 @@
-import { FunctionalComponent, VNode, h } from 'preact';
+import { FunctionalComponent, VNode, h, ComponentChildren } from 'preact';
 import { createPortal } from 'preact/compat';
 import { useRef, useState, useLayoutEffect } from 'preact/hooks';
 
@@ -46,9 +46,10 @@ type Props = {
     title: string;
     isOpen: boolean;
     onClose: () => void;
+    footer?: ComponentChildren;
 };
 
-const Modal: FunctionalComponent<Props> = ({ children, isOpen, onClose, title }) => {
+const Modal: FunctionalComponent<Props> = ({ children, footer, isOpen, onClose, title }) => {
     const bgEl = useRef(null);
     const onDiscard = (e: MouseEvent) => {
         if (e.target as HTMLElement == bgEl.current) {
@@ -68,7 +69,7 @@ const Modal: FunctionalComponent<Props> = ({ children, isOpen, onClose, title })
                     <section class="modal-card-body">
                         {children}
                     </section>
-                    <footer class="modal-card-foot"></footer>
+                    <footer class="modal-card-foot">{footer}</footer>
                 </div>
             </div>
         </Portal>
