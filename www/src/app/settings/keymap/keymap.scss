@@ -1,11 +1,4 @@
-@import "../../style/variables.sass";
-
-.container {
-    label {
-        display: inline-block;
-        margin-right: 0.3rem;
-    }
-}
+@import "../../../style/variables.sass";
 
 .controldir {
     width: 25px;
@@ -46,6 +39,11 @@
 .keymap {
     border-spacing: 0;
     text-align: center;
+
+    label {
+        display: inline-block;
+        margin-right: 0.3rem;
+    }
 
     td {
         padding: 0.25em 0.5em;
