@@ -14,7 +14,7 @@ jobs:
     name: Build 
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: true
       - uses: actions/cache@v2
@@ -44,13 +44,6 @@ jobs:
           cache: 'npm'
           cache-dependency-path: 'www/package-lock.json'
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-
       - name: Set version
         run: |
           echo VERSION=${GITHUB_REF/refs\/tags\/v/} >> $GITHUB_ENV
@@ -73,7 +66,27 @@ jobs:
         env:
           NODE_ENV: production
 
-      - name: Publish
-        run: 'aws s3 sync --delete www/build s3://${S3_ENDPOINT}'
-        env:
-          S3_ENDPOINT: ${{ secrets.S3_ENDPOINT }}
+      - uses: actions/checkout@v3
+        with:
+          repository: ${{ secrets.SITE_REPO }}
+          token: ${{ secrets.GHA_PADME_CC_TOKEN }}
+          path: padme.cc
+
+      - name: Update page
+        run: |
+          rm -rf ./*
+          echo "# [$VERSION]($GIT_LINK)" > README.md
+          cp -r ../www/build/* .
+          git config --local user.email "ig11@bots.noreply.github.com"
+          git config --local user.name "IG-11"
+          git add .
+          git commit -m "v$VERSION"
+        working-directory: ./padme.cc
+
+      - name: Deploy
+        uses: ad-m/github-push-action@master
+        with:
+          github_token:  ${{ secrets.GHA_PADME_CC_TOKEN }}
+          branch: main
+          directory: ./padme.cc
+          repository: ${{ secrets.SITE_REPO }}
