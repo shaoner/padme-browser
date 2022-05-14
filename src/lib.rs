@@ -6,11 +6,13 @@ use wasm_bindgen::prelude::*;
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
+mod audio;
 mod cartridge;
 mod emulator;
 mod lcd;
 mod serial;
 
+pub use audio::AudioPlayer;
 pub use cartridge::Cartridge;
 pub use emulator::{Emulator, WButton};
 pub use lcd::Lcd;

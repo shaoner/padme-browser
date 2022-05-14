@@ -1,7 +1,7 @@
 use padme_core::{Button, System};
 use wasm_bindgen::prelude::*;
 
-use crate::{Cartridge, Lcd, SerialConsole};
+use crate::{AudioPlayer, Cartridge, Lcd, SerialConsole};
 
 #[wasm_bindgen]
 pub enum WButton {
@@ -17,17 +17,19 @@ pub enum WButton {
 
 #[wasm_bindgen]
 pub struct Emulator {
-    sys: System<Vec<u8>, Lcd, SerialConsole>,
+    sys: System<Vec<u8>, Lcd, SerialConsole, AudioPlayer>,
 }
 
 #[wasm_bindgen]
 impl Emulator {
-    pub fn new(cartridge: Cartridge, on_serial_handler: js_sys::Function) -> Self {
+    pub fn new(cartridge: Cartridge,
+               on_serial_handler: js_sys::Function) -> Self {
         Emulator {
             sys: System::new(
                 cartridge.rom(),
                 Lcd::new(),
                 SerialConsole::new(on_serial_handler),
+                AudioPlayer::new(),
             ),
         }
     }
@@ -73,4 +75,13 @@ impl Emulator {
             WButton::Right => self.sys.set_button(Button::Right, is_pressed),
         }
     }
+
+    pub fn enable_audio(&mut self, enable: bool) {
+        if enable {
+            self.sys.speaker().play();
+        } else {
+            self.sys.speaker().pause();
+        }
+    }
+
 }
