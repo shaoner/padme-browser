@@ -236,6 +236,12 @@ class ConsoleComponent extends Component<Props, State> {
                 this._handleKeyPress(event.keyCode, false);
             });
         }
+
+        document.addEventListener('visibilitychange', () => {
+            if (this.emu) {
+                this.emu.enable_audio(!document.hidden);
+            }
+        });
     }
 
     public render() {
