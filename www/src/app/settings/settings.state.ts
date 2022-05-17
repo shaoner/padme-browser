@@ -12,6 +12,7 @@ interface State {
         };
         maxFps: number;
         serialEnabled: boolean;
+        audioEnabled: boolean;
     }
 }
 
@@ -24,6 +25,7 @@ interface Events {
     'settings/style/update': string;
     'settings/max-fps/update': number;
     'settings/serial/update': boolean;
+    'settings/audio-enabled/update': boolean;
     'settings/reset': void;
 }
 
@@ -42,6 +44,7 @@ const initialState = {
     },
     maxFps: 60,
     serialEnabled: false,
+    audioEnabled: true,
 };
 
 const setupListeners: StoreonModule<State, Events> = (store) => {
@@ -67,6 +70,10 @@ const setupListeners: StoreonModule<State, Events> = (store) => {
 
     store.on('settings/serial/update', ({ settings }, serialEnabled) => (
         { settings: { ...settings, serialEnabled } }
+    ))
+
+    store.on('settings/audio-enabled/update', ({ settings }, audioEnabled) => (
+        { settings: { ...settings, audioEnabled } }
     ))
 
     store.on('settings/reset', () => ({

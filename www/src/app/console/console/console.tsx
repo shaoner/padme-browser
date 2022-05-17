@@ -20,7 +20,7 @@ import { Scalable } from '@app/components/scalable';
 import { PowerSwitch } from '../power-switch';
 import { Screen } from '../screen';
 import { SettingsState } from '@app/settings/settings.state';
-import { type Events } from '@/store';
+import store, { type Events } from '@/store';
 import { isMobile } from '@/utils';
 
 import style from './console.scss';
@@ -239,7 +239,14 @@ class ConsoleComponent extends Component<Props, State> {
 
         document.addEventListener('visibilitychange', () => {
             if (this.emu) {
-                this.emu.enable_audio(!document.hidden);
+                const { settings: { audioEnabled } } = this.props;
+                this.emu.enable_audio(!document.hidden && audioEnabled);
+            }
+        });
+
+        store.on('settings/audio-enabled/update', (_, audioEnabled: boolean) => {
+            if (this.emu) {
+                this.emu.enable_audio(!document.hidden && audioEnabled);
             }
         });
     }

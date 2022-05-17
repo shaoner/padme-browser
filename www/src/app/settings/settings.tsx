@@ -86,6 +86,20 @@ const Settings: FunctionalComponent<Props> = ({ isOpen, onClose }) => {
                                 </div>
                             </div>
                         </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label">
+                                <label class="label">Enable audio</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input type="checkbox" checked={settings.audioEnabled} onInput={(e) => {
+                                            e.target && dispatch('settings/audio-enabled/update', (e.target as HTMLInputElement).checked)
+                                        }} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {!isMobile() ? (
