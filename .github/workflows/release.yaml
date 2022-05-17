@@ -49,6 +49,7 @@ jobs:
           echo VERSION=${GITHUB_REF/refs\/tags\/v/} >> $GITHUB_ENV
           echo GIT_SHA=${GITHUB_SHA:0:8} >> $GITHUB_ENV
           echo GIT_LINK=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/tree/$GITHUB_SHA >> $GITHUB_ENV
+          echo PUBLIC_URL=https://padme.cc >> $GITHUB_ENV
 
       - name: Setup wasm-pack
         run: 'curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh'
